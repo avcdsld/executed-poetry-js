@@ -1,0 +1,64 @@
+</script>
+<script>
+const S=document.getElementById('s'),P=document.getElementById('p'),R=document.getElementById('r'),B=document.getElementById('b');
+const T=document.getElementById('o').textContent.replace(/^\n/,'').replace(/\n$/,'');
+const U=new TextEncoder();
+const X=b=>Array.from(b,v=>v.toString(16).padStart(2,'0')).join('');
+
+const E=(()=>{try{null.f}catch(e){const m=String(e&&e.message);
+if(m.indexOf('Cannot read properties')===0)return'V8';
+if(m.indexOf('null has no properties')===0)return'SpiderMonkey';
+if(m.indexOf('null is not an object')===0)return'JavaScriptCore'}
+return'unnamed engine'})();
+
+const V=(()=>{const p=[['es2020',()=>typeof globalThis=='object'&&typeof BigInt=='function'],
+['es2021',()=>typeof WeakRef=='function'&&!!''.replaceAll],
+['es2022',()=>!![].at&&!!Object.hasOwn],
+['es2023',()=>!![].findLast&&!![].toSorted],
+['es2024',()=>!!Object.groupBy&&!!Promise.withResolvers],
+['es2025',()=>!!RegExp.escape&&!!Promise.try&&!!new Set().union]];
+let r='es5';for(const[n,w]of p){let o=false;try{o=!!w()}catch(e){o=false}if(!o)break;r=n}return r})();
+
+const M=['javascript:'+V,E].join(' | ');
+P.textContent=T;
+
+// この実行環境の particulars から鍵を導出する。同じ環境なら同じ鍵が毎回再現し、
+// 異なる環境は異なる鍵を持つ。「この環境がこの詩に署名した」という証言。
+// canvas のピクセルは使わない(保護下でも安定)。UA の版番号は落とす(自動更新で揺れない)。
+const GPU=(()=>{try{const c=document.createElement('canvas');
+const g=c.getContext('webgl')||c.getContext('experimental-webgl');if(!g)return'';
+const d=g.getExtension('WEBGL_debug_renderer_info');
+const rr=d?g.getParameter(d.UNMASKED_RENDERER_WEBGL):g.getParameter(g.RENDERER);
+const vv=d?g.getParameter(d.UNMASKED_VENDOR_WEBGL):g.getParameter(g.VENDOR);
+return(vv||'')+' / '+(rr||'')}catch(e){return''}})();
+
+const N=navigator,SC=screen;
+const FP=['engine='+E,'es='+V,
+'ua='+String(N.userAgent||'').replace(/[0-9]+/g,''),
+'lang='+(N.languages?N.languages.join(','):N.language||''),
+'platform='+(N.platform||''),
+'cores='+(N.hardwareConcurrency||''),
+'mem='+(N.deviceMemory||''),
+'screen='+SC.width+'x'+SC.height,
+'depth='+SC.colorDepth,
+'tz='+(Intl.DateTimeFormat().resolvedOptions().timeZone||''),
+'gpu='+GPU].join('\n');
+
+const K=(async()=>{try{if(!globalThis.EP)return null;
+return await EP.keygenAsync(EP.sha256(U.encode(FP)))}catch(e){return null}})();
+
+const W=r=>{R.replaceChildren(...r.map(([n,v])=>{const d=document.createElement('div');
+d.dataset.label=n||'';d.textContent=v;return d}));G()};
+
+const G=()=>{P.style.fontSize='';const a=S.clientWidth;
+if(a&&P.scrollWidth>a)P.style.fontSize=(parseFloat(getComputedStyle(P).fontSize)*a/P.scrollWidth*0.995).toFixed(2)+'px';
+R.style.fontSize='';R.style.width='';
+const d=document.createElement('div');d.dataset.label='pub';d.textContent='0'.repeat(64);
+d.style.cssText='position:absolute;visibility:hidden;width:max-content';R.append(d);
+const w=d.scrollWidth;d.remove();const b=R.parentElement.clientWidth*0.82;
+if(w&&b){R.style.fontSize=(parseFloat(getComputedStyle(R).fontSize)*b/w).toFixed(2)+'px';
+const q=document.createElement('div');q.dataset.label='pub';q.textContent='0'.repeat(64);
+q.style.cssText='position:absolute;visibility:hidden;width:max-content';R.append(q);
+R.style.width=(q.scrollWidth+2)+'px';q.remove()}};
+
+let n=

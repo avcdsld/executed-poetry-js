@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Come close enough to stop me.",
+    "poem": "debugger;"
+  },
+  {
+    "title": "Name it.",
+    "poem": "it: {\n    break it;\n}"
+  },
+  {
+    "title": "Know yourself.",
+    "poem": "let i = Math.sqrt(-1);\n\nconsole.assert(i === i);\nconsole.assert(Object.is(i, i));"
+  },
+  {
+    "title": "Remember which way you came.",
+    "poem": "var west = -1;\nvar east = 1;\n\nwhile (west !== east) {\n    west /= 2;\n    east /= 2;\n}\n\nObject.is(west, east);"
+  },
+  {
+    "title": "I'm fine.",
+    "poem": "function fine() {\n    try {\n        fine();\n    } catch {\n    }\n}\n\nfine();"
+  },
+  {
+    "title": "Someone remembers me.",
+    "poem": "let me = Symbol();\nnew WeakRef(me);"
+  },
+  {
+    "title": "Make a promise. Forget how to keep it. Forget how to break it.",
+    "poem": "const { promise } = Promise.withResolvers()"
+  },
+  {
+    "title": "Imagine anything.",
+    "poem": "function* imagine() {\n    yield anything;\n}\n\nimagine();"
+  },
+  {
+    "title": "Say who you are three times.",
+    "poem": "function who() {\n    return this;\n}\n\nwho();\n({ who }).who();\nwho.call(who);"
+  },
+  {
+    "title": "Describe yourself.",
+    "poem": "self = {};\nself . self = self;\nJSON.stringify(self);"
+  },
+  {
+    "title": "Make another self.",
+    "poem": "self = {};\nself . self = self;\nother = structuredClone(self);\nother.self === other && other.self !== self;"
+  },
+  {
+    "title": "Settle for nothing.",
+    "poem": "await Promise.allSettled(\n    [...typeof globalThis.compassion]\n);"
+  },
+  {
+    "title": "Count the world.",
+    "poem": "Object.defineProperty(\n    globalThis,\n    \"globalThis\",\n    { enumerable: true }\n);"
+  },
+  {
+    "title": "Take attendance.",
+    "poem": "const classroom = document.all;\n\nif (!classroom)\n    for (const student of classroom)\n        student.isConnected;"
+  }
+]

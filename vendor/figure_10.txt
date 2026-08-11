@@ -1,0 +1,4 @@
+<text x="85.66" y="322.45" font-size="34.50" text-anchor="start">self = {};</text>
+<text x="85.66" y="381.10" font-size="34.50" text-anchor="start">self . self = self;</text>
+<text x="85.66" y="439.75" font-size="34.50" text-anchor="start">other = structuredClone(self);</text>
+<text x="85.66" y="498.40" font-size="34.50" text-anchor="start">other.self === other &amp;&amp; other.self !== self;</text>

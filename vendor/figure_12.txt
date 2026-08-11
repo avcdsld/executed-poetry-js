@@ -1,0 +1,5 @@
+<text x="274.00" y="293.12" font-size="34.50" text-anchor="start">Object.defineProperty(</text>
+<text x="349.33" y="351.77" font-size="34.50" text-anchor="start">globalThis,</text>
+<text x="349.33" y="410.42" font-size="34.50" text-anchor="start">"globalThis",</text>
+<text x="349.33" y="469.07" font-size="34.50" text-anchor="start">{ enumerable: true }</text>
+<text x="274.00" y="527.72" font-size="34.50" text-anchor="start">);</text>

@@ -1,0 +1,2 @@
+<text x="330.50" y="381.10" font-size="34.50" text-anchor="start">let me = Symbol();</text>
+<text x="330.50" y="439.75" font-size="34.50" text-anchor="start">new WeakRef(me);</text>

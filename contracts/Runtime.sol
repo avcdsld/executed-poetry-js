@@ -122,29 +122,24 @@ contract Runtime is IRuntime, Ownable {
     }
 
     function _footer(string calldata title, Trace calldata t) internal pure returns (string memory) {
+        string memory env = t.recorded ? t.env : "javascript | unexecuted";
+        string memory pubHex = _hex(t.pub);
+        string memory sigHi = t.recorded ? _hex(t.sig, 0) : pubHex;
+        string memory sigLo = t.recorded ? _hex(t.sig, 32) : pubHex;
+
+        string memory ex = string.concat("executed #", _u(t.n), " in ", _ms(t.micros), "ms | ", title);
+        (string memory a, string memory b, bool wrapped) = _wrapExec(ex);
+
         string[6] memory lbl;
         string[6] memory val;
-        uint256 nrows;
-
-        if (!t.recorded) {
-            lbl[0] = "msg"; val[0] = "javascript | unexecuted";
-            lbl[1] = "";    val[1] = string.concat("executed #0 | ", title);
-            lbl[2] = "";    val[2] = "unsigned";
-            nrows = 3;
-        } else {
-            string memory env = string.concat(_esc(t.env), " | ", _utc(t.unixTime));
-            string memory ex = string.concat("executed #", _u(t.n), " in ", _ms(t.micros), "ms | ", title);
-            (string memory a, string memory b, bool wrapped) = _wrapExec(ex);
-
-            lbl[0] = "msg"; val[0] = env;
-            lbl[1] = "";    val[1] = a;
-            uint256 k = 2;
-            if (wrapped) { lbl[k] = ""; val[k] = b; k++; }
-            lbl[k] = "pub"; val[k] = _hex(t.pub);     k++;
-            lbl[k] = "sig"; val[k] = _hex(t.sig, 0);  k++;
-            lbl[k] = "";    val[k] = _hex(t.sig, 32); k++;
-            nrows = k;
-        }
+        lbl[0] = "msg"; val[0] = string.concat(_esc(env), " | ", _utc(t.unixTime));
+        lbl[1] = "";    val[1] = a;
+        uint256 k = 2;
+        if (wrapped) { lbl[k] = ""; val[k] = b; k++; }
+        lbl[k] = "pub"; val[k] = pubHex; k++;
+        lbl[k] = "sig"; val[k] = sigHi;  k++;
+        lbl[k] = "";    val[k] = sigLo;  k++;
+        uint256 nrows = k;
 
         uint256 start = 6 - nrows;
         bytes memory out;
@@ -167,7 +162,7 @@ contract Runtime is IRuntime, Ownable {
         return string.concat('<text x="', x, '" y="', y, '" font-size="', REC, '" text-anchor="start">', v, '</text>');
     }
 
-    function _esc(string calldata s) internal pure returns (string memory) {
+    function _esc(string memory s) internal pure returns (string memory) {
         bytes memory b = bytes(s);
         bytes memory o = new bytes(b.length * 5);
         uint256 k;

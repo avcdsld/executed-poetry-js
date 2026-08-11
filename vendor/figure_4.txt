@@ -1,0 +1,7 @@
+<text x="339.92" y="205.15" font-size="34.50" text-anchor="start">function fine() {</text>
+<text x="415.25" y="263.80" font-size="34.50" text-anchor="start">try {</text>
+<text x="490.58" y="322.45" font-size="34.50" text-anchor="start">fine();</text>
+<text x="415.25" y="381.10" font-size="34.50" text-anchor="start">} catch {</text>
+<text x="415.25" y="439.75" font-size="34.50" text-anchor="start">}</text>
+<text x="339.92" y="498.40" font-size="34.50" text-anchor="start">}</text>
+<text x="339.92" y="615.70" font-size="34.50" text-anchor="start">fine();</text>

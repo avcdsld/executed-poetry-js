@@ -1,0 +1,6 @@
+<text x="349.33" y="234.47" font-size="34.50" text-anchor="start">function who() {</text>
+<text x="424.67" y="293.12" font-size="34.50" text-anchor="start">return this;</text>
+<text x="349.33" y="351.77" font-size="34.50" text-anchor="start">}</text>
+<text x="349.33" y="469.07" font-size="34.50" text-anchor="start">who();</text>
+<text x="349.33" y="527.72" font-size="34.50" text-anchor="start">({ who }).who();</text>
+<text x="349.33" y="586.37" font-size="34.50" text-anchor="start">who.call(who);</text>

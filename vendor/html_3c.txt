@@ -1,0 +1,24 @@
+;
+const run=()=>{const g=new Date(),b=performance.now();
+let x='';try{(0,eval)(T)}catch(e){x=String(e&&e.message||e).replace(/\s+/g,' ').trim()}
+const l=performance.now()-b;n+=1;
+B.textContent=x?(x+' ').repeat(Math.ceil(50000/(x.length+1))):'';
+return{n,g,l}};
+
+const say=x=>[M+' | '+x.g.toISOString().replace('T',' ').slice(0,19)+' UTC',
+'executed #'+x.n+' in '+x.l.toFixed(3)+'ms | '+document.title];
+
+const sign=async x=>{const m=say(x),k=await K;if(!k)return mute(x);
+const s=X(await EP.signAsync(U.encode(m.join('\n')),k.secretKey));
+W([['msg',m[0]],[null,m[1]],['pub',X(k.publicKey)],['sig',s.slice(0,64)],[null,s.slice(64)]])};
+
+const mute=x=>{const m=say(x);W([['msg',m[0]],[null,m[1]],[null,'unsigned']])};
+const speak=globalThis.EP?sign:mute;
+
+addEventListener('resize',G);
+if(document.fonts)document.fonts.ready.then(G);
+P.addEventListener('click',()=>speak(run()));
+G();speak(run());
+</script>
+</body>
+</html>

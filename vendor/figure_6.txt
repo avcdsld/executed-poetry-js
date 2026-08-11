@@ -1,0 +1,1 @@
+<text x="95.08" y="410.42" font-size="34.50" text-anchor="start">const { promise } = Promise.withResolvers()</text>

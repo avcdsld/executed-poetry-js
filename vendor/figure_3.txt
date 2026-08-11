@@ -1,0 +1,7 @@
+<text x="283.41" y="175.82" font-size="34.50" text-anchor="start">var west = -1;</text>
+<text x="283.41" y="234.47" font-size="34.50" text-anchor="start">var east = 1;</text>
+<text x="283.41" y="351.77" font-size="34.50" text-anchor="start">while (west !== east) {</text>
+<text x="358.75" y="410.42" font-size="34.50" text-anchor="start">west /= 2;</text>
+<text x="358.75" y="469.07" font-size="34.50" text-anchor="start">east /= 2;</text>
+<text x="283.41" y="527.72" font-size="34.50" text-anchor="start">}</text>
+<text x="283.41" y="645.02" font-size="34.50" text-anchor="start">Object.is(west, east);</text>

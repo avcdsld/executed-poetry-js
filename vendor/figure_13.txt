@@ -1,0 +1,4 @@
+<text x="161.00" y="293.12" font-size="34.50" text-anchor="start">const classroom = document.all;</text>
+<text x="161.00" y="410.42" font-size="34.50" text-anchor="start">if (!classroom)</text>
+<text x="236.33" y="469.07" font-size="34.50" text-anchor="start">for (const student of classroom)</text>
+<text x="311.67" y="527.72" font-size="34.50" text-anchor="start">student.isConnected;</text>

@@ -1,0 +1,4 @@
+<text x="302.25" y="293.12" font-size="34.50" text-anchor="start">function* imagine() {</text>
+<text x="377.58" y="351.77" font-size="34.50" text-anchor="start">yield anything;</text>
+<text x="302.25" y="410.42" font-size="34.50" text-anchor="start">}</text>
+<text x="302.25" y="527.72" font-size="34.50" text-anchor="start">imagine();</text>
