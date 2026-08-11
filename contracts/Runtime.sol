@@ -41,7 +41,7 @@ contract Runtime is IRuntime, Ownable {
     string internal constant VX  = "209.02";
 
     string internal constant DESC =
-        "Executed Poetry for JavaScript is a series of seven code poems that run. Each poem is held in a single self-contained HTML file, stored on Ethereum as a fully on-chain token. The original exists only there. When a copy is opened in a browser, the poem runs on the reader's machine.\\n\\n"
+        "Executed Poetry for JavaScript is a series of seven code poems that run. Each poem is held in a single self-contained HTML file, stored on Ethereum as a fully onchain token. The original exists only there. When a copy is opened in a browser, the poem runs on the reader's machine.\\n\\n"
         "Each poem pairs a short title in plain language with a few lines of code. The title speaks of human things: knowing yourself, being fine, remembering someone, making a promise. The computer takes the title at its word and executes it. Poetry arises in the gap between what is said and what is done.\\n\\n"
         "Each time the code is executed, a signature is displayed as the testimony of that run. The execution environment derives a key pair from its own particulars and signs the moment and context of the execution. The testimony remains. The event it pointed to does not return.\\n\\n"
         "The code, its execution environment, and the means of verification persist together, as a record on the blockchain and an execution in the browser. This work treats code as a readable structure. Its execution is itself an act of verification.";
