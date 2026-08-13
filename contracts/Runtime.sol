@@ -118,7 +118,7 @@ contract Runtime is IRuntime, Ownable {
 
     function _lastRun(Trace calldata t) internal pure returns (string memory) {
         if (!t.recorded) return "";
-        return string.concat(',{"trait_type":"Last Run","value":"', _utc(t.unixTime), '"}');
+        return string.concat(',{"trait_type":"Last Run","value":"', _utc(t.unixtime), '"}');
     }
 
     function _footer(string calldata title, Trace calldata t) internal pure returns (string memory) {
@@ -127,12 +127,12 @@ contract Runtime is IRuntime, Ownable {
         string memory sigHi = t.recorded ? _hex(t.sig, 0) : pubHex;
         string memory sigLo = t.recorded ? _hex(t.sig, 32) : pubHex;
 
-        string memory ex = string.concat("executed #", _u(t.n), " in ", _ms(t.micros), "ms | ", title);
+        string memory ex = string.concat("executed #", _u(t.count), " in ", _ms(t.micros), "ms | ", title);
         (string memory a, string memory b, bool wrapped) = _wrapExec(ex);
 
         string[6] memory lbl;
         string[6] memory val;
-        lbl[0] = "msg"; val[0] = string.concat(_esc(env), " | ", _utc(t.unixTime));
+        lbl[0] = "msg"; val[0] = string.concat(_esc(env), " | ", _utc(t.unixtime));
         lbl[1] = "";    val[1] = a;
         uint256 k = 2;
         if (wrapped) { lbl[k] = ""; val[k] = b; k++; }

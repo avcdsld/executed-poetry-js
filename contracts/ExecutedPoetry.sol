@@ -16,7 +16,7 @@ contract ExecutedPoetry is ERC721, ERC2981, Ownable {
     mapping(uint256 => uint256) public counts;
     mapping(uint256 => IRuntime.Trace) public executions;
 
-    event Executed(uint256 indexed id, uint256 n, address indexed by, uint256 blockTime, bytes32 pub, bytes sig);
+    event Executed(uint256 indexed id, uint32 count, address indexed by, uint256 blockTime, uint32 micros, uint64 unixtime, string env, bytes32 pub, bytes sig);
 
     constructor(address r, address royaltyReceiver, uint96 royaltyBps) ERC721("Executed Poetry for JavaScript", "POEM") Ownable(msg.sender) {
         runtime = IRuntime(r);
@@ -45,13 +45,14 @@ contract ExecutedPoetry is ERC721, ERC2981, Ownable {
         _mint(to, id);
     }
 
-    function record(uint256 id, uint32 n, uint32 micros, uint64 unixTime, string calldata env, bytes32 pub, bytes calldata sig) external {
+    function record(uint256 id, uint32 count, uint32 micros, uint64 unixtime, string calldata env, bytes32 pub, bytes calldata sig) external {
         require(id < total, "unknown");
         require(sig.length == 64, "sig");
         require(bytes(env).length <= 44 && _isEnv(env), "env");
+        // debugger;
         counts[id] += 1;
-        executions[id] = IRuntime.Trace(true, n, micros, unixTime, env, pub, sig);
-        emit Executed(id, n, msg.sender, block.timestamp, pub, sig);
+        executions[id] = IRuntime.Trace(true, count, micros, unixtime, env, pub, sig);
+        emit Executed(id, count, msg.sender, block.timestamp, micros, unixtime, env, pub, sig);
     }
 
     function _isEnv(string calldata env) internal pure returns (bool) {

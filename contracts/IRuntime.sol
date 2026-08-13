@@ -4,9 +4,9 @@ pragma solidity 0.8.36;
 interface IRuntime {
     struct Trace {
         bool    recorded;
-        uint32  n;
+        uint32  count;
         uint32  micros;
-        uint64  unixTime;
+        uint64  unixtime;
         string  env;
         bytes32 pub;
         bytes   sig;
