@@ -2,7 +2,7 @@
 <text x="85.66" y="381.10" font-size="34.50" text-anchor="start">self . self = self;</text>
 <text x="85.66" y="439.75" font-size="34.50" text-anchor="start">other = structuredClone(self);</text>
 <text x="85.66" y="498.40" font-size="34.50" text-anchor="start">other.self === other &amp;&amp; other.self !== self;</text><text x="159.70" y="799.81" font-size="18.07" text-anchor="start">msg</text>
-<text x="209.02" y="799.81" font-size="18.07" text-anchor="start">javascript:es2025 | V8 | 1970-01-01 00:00:00 UTC</text>
+<text x="209.02" y="799.81" font-size="18.07" text-anchor="start">javascript:V8 | MacIntel | 1970-01-01 00:00:00 UTC</text>
 <text x="209.02" y="826.91" font-size="18.07" text-anchor="start">executed #1 in 0.000ms | Make another self.</text>
 <text x="159.70" y="854.02" font-size="18.07" text-anchor="start">pub</text>
 <text x="209.02" y="854.02" font-size="18.07" text-anchor="start">0000000000000000000000000000000000000000000000000000000000000000</text>

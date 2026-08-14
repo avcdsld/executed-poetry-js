@@ -52,20 +52,9 @@ if(m.indexOf('null has no properties')===0)return'SpiderMonkey';
 if(m.indexOf('null is not an object')===0)return'JavaScriptCore'}
 return'unnamed engine'})();
 
-const V=(()=>{const p=[['es2020',()=>typeof globalThis=='object'&&typeof BigInt=='function'],
-['es2021',()=>typeof WeakRef=='function'&&!!''.replaceAll],
-['es2022',()=>!![].at&&!!Object.hasOwn],
-['es2023',()=>!![].findLast&&!![].toSorted],
-['es2024',()=>!!Object.groupBy&&!!Promise.withResolvers],
-['es2025',()=>!!RegExp.escape&&!!Promise.try&&!!new Set().union]];
-let r='es5';for(const[n,w]of p){let o=false;try{o=!!w()}catch(e){o=false}if(!o)break;r=n}return r})();
-
-const M=['javascript:'+V,E].join(' | ');
+const M='javascript:'+E+(navigator.platform?' | '+navigator.platform:'');
 P.textContent=T;
 
-// この実行環境の particulars から鍵を導出する。同じ環境なら同じ鍵が毎回再現し、
-// 異なる環境は異なる鍵を持つ。「この環境がこの詩に署名した」という証言。
-// canvas のピクセルは使わない(保護下でも安定)。UA の版番号は落とす(自動更新で揺れない)。
 const GPU=(()=>{try{const c=document.createElement('canvas');
 const g=c.getContext('webgl')||c.getContext('experimental-webgl');if(!g)return'';
 const d=g.getExtension('WEBGL_debug_renderer_info');
@@ -74,7 +63,7 @@ const vv=d?g.getParameter(d.UNMASKED_VENDOR_WEBGL):g.getParameter(g.VENDOR);
 return(vv||'')+' / '+(rr||'')}catch(e){return''}})();
 
 const N=navigator,SC=screen;
-const FP=['engine='+E,'es='+V,
+const FP=['engine='+E,
 'ua='+String(N.userAgent||'').replace(/[0-9]+/g,''),
 'lang='+(N.languages?N.languages.join(','):N.language||''),
 'platform='+(N.platform||''),

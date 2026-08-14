@@ -18,7 +18,7 @@ import { deployAll, poems } from "./install.ts";
 type Hex = `0x${string}`;
 const Z32 = ("0x" + "00".repeat(32)) as Hex;
 const Z64 = ("0x" + "00".repeat(64)) as Hex;
-const ENV = "javascript:es2025 | V8";
+const ENV = "javascript:V8 | MacIntel";
 
 async function main() {
   const { viem } = await network.connect();
