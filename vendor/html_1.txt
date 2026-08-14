@@ -2,7 +2,7 @@
 html{color-scheme:light;-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100svh;display:grid;place-items:center;
 background:#ffffff;color:#232320;font-family:'A',monospace;
---side:calc(min(100svw,100svh) * 0.84)}
+--side:calc(min(100svw,100svh))}
 #f{box-sizing:border-box;width:var(--side);height:var(--side);padding:calc(var(--side)*0.085);
 background:#eeeeea;display:flex;flex-direction:column}
 #s{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
