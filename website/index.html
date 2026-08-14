@@ -243,8 +243,6 @@ const TPL_D = ";\nconst run=()=>{const g=new Date(),b=performance.now();\nlet x=
 const buildPoemHtml = (title, code, count) =>
   TPL_A + title.replace(/\n/g,' ') + TPL_B + code + TPL_C + count + TPL_D;
 
-const mockCounts = POEMS.map(() => 0);
-
 const SEL = { html:'0x814b8801', record:'0x39961c2b' };
 
 const strip = h => h.startsWith('0x') ? h.slice(2) : h;
@@ -387,7 +385,7 @@ async function ensurePoem(id){
   slot.started = true;
   try {
     const html = MOCK
-      ? buildPoemHtml(POEMS[id].title, POEMS[id].code, mockCounts[id])
+      ? buildPoemHtml(POEMS[id].title, POEMS[id].code, 0)
       : decString(await call(SEL.html + padU(id)));
     const iframe = document.createElement('iframe');
     iframe.title = POEMS[id].title.replace(/\n/g,' ');
@@ -473,12 +471,10 @@ slots.forEach((slot, id) => {
     slot.rStatus.className = 'status';
     try {
       const verified = await verifyTestimony({...t, title: t.docTitle});
+      if (!verified) throw new Error('signature invalid');
       if (!CONFIG.contract) {
-        mockCounts[id] += 1;
-        slot.recorded = true;
-        slot.rStatus.textContent = 'recorded, mock runtime \u00b7 testimony #'+t.count
-          + (verified ? ' \u00b7 signature verified' : ' \u00b7 signature invalid');
-        slot.rStatus.className = verified ? 'status ok' : 'status bad';
+        slot.rStatus.textContent = 'not recorded · contract not deployed';
+        slot.rStatus.className = 'status';
       } else {
         slot.rStatus.textContent = 'awaiting wallet\u2026';
         const eth = window.ethereum;
